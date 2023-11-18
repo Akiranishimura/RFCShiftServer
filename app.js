@@ -32,6 +32,30 @@ const getInfoShiftByUser = require('./lib/getInfo/shiftbyuser');
 app.use('/api/getInfo', getInfoShiftByUser);
 
 
+const db = mysql.createConnection({
+    host: 'process.env.DB_HOST',
+    user: 'process.env.DB_USER',
+    password: 'process.env.DB_PASSWORD',
+    database: 'process.env.DB_NAME'
+});
+
+// データベースへの接続
+db.connect(err => {
+    if (err) {
+        throw err;
+    }
+    console.log('MySQL connected...');
+});
+
+// ユーザーテーブルからデータを取得するAPIエンドポイント
+app.get('/users', (req, res) => {
+    const sql = 'SELECT * FROM USER';
+    db.query(sql, (err, results) => {
+        if (err) throw err;
+        res.send(results);
+    });
+});
+
 
 // app.post('/api/login', (req, res) => {
 //     console.log(req.body); // { userId: '...', department: '...' }
