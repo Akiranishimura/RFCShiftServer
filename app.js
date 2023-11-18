@@ -39,7 +39,7 @@ app.use('/api/getInfo', getInfoShiftByUser);
 // });
 
 app.get("/test", function(req, res){
-    res.json({"value" : 1});
+    res.json({"value" : process.env.CLIENT_URL});
   });
 
 app.listen(PORT, () => {
