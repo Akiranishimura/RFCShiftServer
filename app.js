@@ -3,6 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const db = require('./lib/DB/connectDB');
+const PORT = process.env.PORT || 3001;
 
 
 
@@ -37,8 +38,10 @@ app.use('/api/getInfo', getInfoShiftByUser);
 //     res.json({ success: true });
 // });
 
+app.get("/test", function(req, res){
+    res.json({"value" : 1});
+  });
 
-
-app.listen(3001, () => {
-    console.log('Server is listening on port 3001');
+app.listen(PORT, () => {
+    console.log('Server is listening on port ' + PORT);
 });
