@@ -2,6 +2,7 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
+// const corsUrl = process.env.CLIENT_URL || provess.env.CLIENT_URL2;
 
 // const db = require('./lib/DB/connectDB');
 const PORT = process.env.PORT || 3001;
@@ -11,11 +12,12 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 
 //Enable Session
-
+//corsをCLIENT_URLとCLIENT_URL2に対して許可する
 app.use(cors({
-    origin: process.env.CLIENT_URL, // Nuxt.js アプリケーションのオリジン
-    credentials: true // クレデンシャル (クッキー、認証情報等) を含むリクエストを許可
+    origin: [process.env.CLIENT_URL, process.env.CLIENT_URL2],
+    credentials: true
 }));
+
 //Enable JSON body parsing
 app.use(express.json());
 
