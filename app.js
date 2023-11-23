@@ -34,7 +34,11 @@ app.use('/api/getInfo', getInfoUser);
 const getInfoShiftByUser = require('./lib/getInfo/shiftbyuser');
 app.use('/api/getInfo', getInfoShiftByUser);
 
+const getAllUser = require('./lib/getInfo/alluser');
+app.use('/api/getInfo', getAllUser);
 
+const getAllShift = require('./lib/getInfo/allshift');
+app.use('/api/getInfo', getAllShift);
 
 
 // app.post('/api/login', (req, res) => {
