@@ -40,6 +40,9 @@ app.use('/api/getInfo', getAllUser);
 const getAllShift = require('./lib/getInfo/allshift');
 app.use('/api/getInfo', getAllShift);
 
+const userSearch = require('./lib/getInfo/usersearch');
+app.use('/api/getInfo', userSearch);
+
 
 // app.post('/api/login', (req, res) => {
 //     console.log(req.body); // { userId: '...', department: '...' }
